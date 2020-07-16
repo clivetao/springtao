@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clive.user.mapper.AdminRoleMapper">
+    <select id="getAllPermission" resultType="com.clive.user.entity.Permission">
+    select p.*
+        from user_admin_role ar
+        left join user_role r on ar.rid=r.id
+        left join user_role_permission rp on r.id=rp.rid
+        left join user_permission p on p.id= rp.pid
+    where ar.aid=#{user_id}
+</select>
+</mapper>
